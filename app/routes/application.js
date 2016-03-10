@@ -1,24 +1,22 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-import ENV from 'wyzyr-ember/config/environment';
+//import ENV from 'wyzyr-ember/config/environment';
 
 export default Ember.Route.extend(ApplicationRouteMixin, {
   beforeModel() {
+    this._super(...arguments);
     let self = this;
+
     let promise = new Promise(function(resolve, reject) {
-      self._super(...arguments);
       self._setCurrentUser().then(function(user) {
+        console.log(`${user.get('fullName')} logged in`);
         resolve(user);
       }, function(reason) {
+        console.log(`FAIL ${reason}`);
         reject(reason);
       });
     });
 
-    promise.then(function(user) {
-      console.log(`${user.get('fullName')} logged in`);
-    }, function(reason) {
-      console.log(`FAIL ${reason}`);
-    });
     return promise;
   },
 
@@ -53,11 +51,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
       if (email && !isCurrentUserLoaded) {
         self.store.query('user', { filter: { email: email } }).then((users) => {
           const user = users.get('firstObject');
-          console.log(session);
           session.set('currentUser', user);
           resolve(user);
         }, function(reason) {
-          reject(reason)
+          reject(reason);
         });
       } else {
         resolve(session.get('currentUser'));

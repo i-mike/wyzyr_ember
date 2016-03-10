@@ -1,2 +1,17 @@
 <h1>Home</h1>
+
+
+
+<ul>
+  {{#each decisions as |decision|}}
+      <li>{{decision.description}}
+
+      </li>
+  {{/each}}
+</ul>
+
+
+
+
+
 {{outlet}}

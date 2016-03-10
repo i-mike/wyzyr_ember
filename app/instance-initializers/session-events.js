@@ -14,7 +14,7 @@
 //  // appInstance.registry.injection('route', 'foo', 'service:foo');
 //}
 
-export function initialize(appInstance) {
+export function initialize(/* appInstance */) {
   //var applicationRoute = appInstance.lookup('route:application');
   //var session          = appInstance.lookup('service:session');
   //

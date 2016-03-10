@@ -6,7 +6,6 @@ export default Ember.Route.extend(UnauthenticatedRouteMixin, {
 
   beforeModel() {
     if (ENV.environment === 'development') {
-      console.log(`${ENV.API_URL}/users/sign_in`);
       window.location.replace(`${ENV.API_URL}/users/sign_in`);
     } else {
       window.location.replace("/users/sign_in");
