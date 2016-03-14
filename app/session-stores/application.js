@@ -1,4 +1,3 @@
-import ENV from 'wyzyr-ember/config/environment';
 import Cookie from 'ember-simple-auth/session-stores/cookie';
 
 export default Cookie.extend({

@@ -1,0 +1,9 @@
+<div class="decision-tile-title">
+    <a href="{{cpPath "decisions" response.decision.slug}}">{{response.decision.description}}</a>
+    <em class="decision-participants">({{response.homePageParticipants}})</em>
+</div>
+<div class="decision-tile-button">
+    <a href="{{cpPath tilePath}}">
+        <button name="button" type="submit" class="btn action-btn {{tileButtonClass}}">{{tileButtonText}}</button>
+    </a>
+</div>

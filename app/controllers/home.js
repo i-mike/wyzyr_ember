@@ -17,5 +17,15 @@ export default Ember.Controller.extend({
         return decision;
       }
     });
+  }),
+
+  activeResponses: Ember.computed(function() {
+    let responses = this.get('session.currentUser.responses').filter((response, index, self) => {
+      if(response.get('isHomePageActiveTileSection')) {
+        return response;
+      }
+    });
+
+    return responses;
   })
 });
