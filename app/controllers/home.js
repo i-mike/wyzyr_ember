@@ -21,7 +21,8 @@ export default Ember.Controller.extend({
 
   activeResponses: Ember.computed(function() {
     let responses = this.get('session.currentUser.responses').filter((response, index, self) => {
-      if(response.get('isHomePageActiveTileSection')) {
+      //if(response.get('isHomePageActiveTileSection')) {
+      if(response.get('homePageSection') === 'active') {
         return response;
       }
     });
